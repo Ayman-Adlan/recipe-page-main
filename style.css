@@ -1,0 +1,239 @@
+@font-face {
+  font-family: "outfit";
+  src: url("./assets/fonts/outfit/Outfit-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "young-serif";
+  src: url("./assets/fonts/young-serif/YoungSerif-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =========================
+  🌐 CSS Variables (Design Tokens)
+   ========================= */
+:root {
+  /* Layout breakpoints */
+  --breakpoint-mobile: 375px;
+  --breakpoint-desktop: 1440px;
+
+  /* Colors */
+  --white: hsl(0, 0%, 100%);
+  --stone-100: hsl(30, 54%, 90%);
+  --stone-150: hsl(30, 18%, 87%);
+  --stone-600: hsl(30, 10%, 34%);
+  --stone-900: hsl(24, 5%, 18%);
+  --brown-800: hsl(14, 45%, 36%);
+  --rose-800: hsl(332, 51%, 32%);
+  --rose-50: hsl(330, 100%, 98%);
+
+  /* Typography */
+  --font-size-base: 16px;
+  --font-family-base: "outfit", serif;
+  --font-family-heading: "young-serif", sans-serif;
+}
+
+/* =========================
+🔧 Global Reset & Base Styles
+   ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Mobile-first styles */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  background-color: var(--stone-100); /* light beige background */
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+.recipe-card {
+  background-color: var(--white); /* white card */
+  border-radius: 1rem; /* rounded corners */
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2.2rem;
+}
+
+/* Images inside the card */
+.recipe-card img {
+  width: 100%;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Desktop layout — wider screen */
+@media (min-width: 1440px) {
+  .recipe-card {
+    max-width: 736px; /* approx 46rem = size seen in design */
+    padding: 2.5rem;
+    margin: 4rem auto;
+  }
+
+  body {
+    padding: 4rem 0;
+  }
+}
+@media (min-width: 900px) {
+  .recipe-card {
+    max-width: 600px;
+    padding: 2rem;
+    margin: 3rem auto;
+  }
+
+  body {
+    padding: 2rem 0;
+  }
+}
+@media (max-width: 600px) {
+  .recipe-card {
+    max-width: 375px;
+    padding: 1rem;
+    margin: 1.5rem auto;
+  }
+
+  body {
+    padding: 2rem 0;
+  }
+}
+
+.heading {
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.heading-paragraph {
+  margin-bottom: 40px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+ul li::before {
+  content: "•"; /* Or use emoji, icon, etc */
+  display: inline-block;
+  width: 1rem; /* creates consistent spacing */
+  margin-right: 1rem; /* aligns bullet with text */
+}
+
+.prep-time {
+  background-color: var(--rose-50);
+  padding: 20px 30px;
+  margin-bottom: 40px;
+}
+
+.prep-time h2 {
+  font-size: 24px;
+  color: var(--rose-800);
+}
+
+.prep-time ul {
+  margin-top: 10px;
+  color: var(--stone-600);
+}
+
+.prep-time li {
+  line-height: 2;
+  font-weight: 400;
+}
+
+.ingredients,
+.instructions {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--stone-150);
+}
+
+.ingredients h2,
+.instructions h2,
+.nutrition h2 {
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
+  color: var(--brown-800);
+  font-weight: 400;
+}
+
+.ingredients ul {
+  margin-top: 15px;
+  color: var(--stone-600);
+}
+
+.ingredients li {
+  line-height: 2;
+  color: var(--stone-600);
+}
+
+.ingredients ul li::before {
+  content: "";
+  display: inline-block;
+  width: 0.2em;
+  height: 0.2em;
+  background-color: var(--brown-800); /* or any color */
+  /* margin-right: 0.75em; */
+  /* margin-right: 1.5rem; */
+  margin-top: -3px;
+  margin-right: 1.5rem;
+  vertical-align: middle;
+  border-radius: 0; /* keep it square */
+}
+
+.instructions ol {
+  margin-top: 15px;
+  list-style: none;
+  padding-left: 2rem;
+  color: var(--stone-600);
+}
+
+.instructions ol li {
+  counter-increment: step;
+  position: relative;
+  margin-bottom: 1.25rem;
+  padding-left: 2rem;
+}
+
+.instructions ol li::before {
+  content: counter(step) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+  color: var(--rose-800);
+}
+
+.nutrition p {
+  color: var(--stone-900);
+  margin: 20px 0;
+}
+
+.nutrition table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nutrition td {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--stone-150);
+}
+
+.nutrition td:last-child {
+  font-weight: bold;
+  color: var(--brown-800);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
